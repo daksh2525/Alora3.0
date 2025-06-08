@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .price-filter {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .price-filter h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .price-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .price-option {
+            display: flex;
+            align-items: center;
+        }
+        .price-option input {
+            margin-right: 10px;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
     <!-- Offer Banner -->
@@ -22,7 +51,6 @@
             <li><a href="shop.html">Shop</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a></li>
         </ul>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -37,87 +65,148 @@
         </div>
 
         <div class="shop-container">
-            <!-- Sidebar Filters -->
+            <!-- Price Filter Section -->
             <aside class="shop-sidebar">
-                <div class="filter-section">
-                    <h3>Categories</h3>
-                    <div class="filter-options">
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="scented" checked> Scented Candles
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="unscented" checked> Unscented Candles
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="seasonal" checked> Seasonal Collection
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="category" value="luxury" checked> Luxury Collection
-                        </label>
-                    </div>
-                </div>
-
-                <div class="filter-section">
+                <div class="price-filter">
                     <h3>Price Range</h3>
-                    <div class="filter-options">
-                        <label class="filter-option">
+                    <div class="price-options">
+                        <label class="price-option">
                             <input type="radio" name="price" value="all" checked> All Prices
                         </label>
-                        <label class="filter-option">
+                        <label class="price-option">
                             <input type="radio" name="price" value="0-1000"> Under ₹1000
                         </label>
-                        <label class="filter-option">
+                        <label class="price-option">
                             <input type="radio" name="price" value="1000-1500"> ₹1000 - ₹1500
                         </label>
-                        <label class="filter-option">
+                        <label class="price-option">
                             <input type="radio" name="price" value="1500-2000"> ₹1500 - ₹2000
                         </label>
-                        <label class="filter-option">
-                            <input type="radio" name="price" value="2000"> Above ₹2000
+                        <label class="price-option">
+                            <input type="radio" name="price" value="2000+"> Above ₹2000
                         </label>
                     </div>
-                </div>
-
-                <div class="filter-section">
-                    <h3>Fragrance</h3>
-                    <div class="filter-options">
-                        <label class="filter-option">
-                            <input type="checkbox" name="fragrance" value="floral" checked> Floral
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="fragrance" value="woody" checked> Woody
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="fragrance" value="citrus" checked> Citrus
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="fragrance" value="spicy" checked> Spicy
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" name="fragrance" value="fresh" checked> Fresh
-                        </label>
+                    <div class="filter-buttons">
+                        <button class="btn" id="apply-filter">Apply Filter</button>
+                        <button class="btn btn-secondary" id="reset-filter">Reset</button>
                     </div>
                 </div>
-
-                <button class="btn" id="apply-filters">Apply Filters</button>
-                <button class="btn btn-secondary" id="reset-filters">Reset Filters</button>
             </aside>
 
             <!-- Product Grid -->
             <section class="shop-products">
-                <div class="sort-options">
-                    <label for="sort-by">Sort by:</label>
-                    <select id="sort-by">
-                        <option value="default">Default</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="name-asc">Name: A-Z</option>
-                        <option value="name-desc">Name: Z-A</option>
-                    </select>
-                </div>
-
-                <div class="products-grid" id="all-products">
-                    <!-- Products will be loaded here by JavaScript -->
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-price="2">
+                        <div class="product-image">
+                            <img src="/images/1.jpg" alt="Cup Cake">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Cup Cake</h3>
+                            <p class="product-price">₹2</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card" data-price="199">
+                        <div class="product-image">
+                            <img src="/images/4.jpg" alt="Floating Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Floating Candle (Pack Of 6)</h3>
+                            <p class="product-price">₹199</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card" data-price="399">
+                        <div class="product-image">
+                            <img src="/images/product1.jpg" alt="Glass Desert Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Glass Desert Candle</h3>
+                            <p class="product-price">₹399</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card" data-price="399">
+                        <div class="product-image">
+                            <img src="/images/product2.jpg" alt="Glass Sunflower Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Glass Sunflower Candle</h3>
+                            <p class="product-price">₹399</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="product-card" data-price="149">
+                        <div class="product-image">
+                            <img src="/images/product3.jpg" alt="Budha Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Budha Candle (Pack Of 3)</h3>
+                            <p class="product-price">₹149</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="product-card" data-price="149">
+                        <div class="product-image">
+                            <img src="/images/product4.jpg" alt="Rose Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Rose Candle</h3>
+                            <p class="product-price">₹149</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="product-card" data-price="199">
+                        <div class="product-image">
+                            <img src="/images/product5.jpg" alt="Bubble Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Bubble Candle</h3>
+                            <p class="product-price">₹199</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="product-card" data-price="399">
+                        <div class="product-image">
+                            <img src="/images/product6.jpg" alt="Glass Candle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Glass Candle</h3>
+                            <p class="product-price">₹399</p>
+                            <div class="product-actions">
+                                <a href="https://rzp.io/rzp/YgZxteY" class="btn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -143,7 +232,6 @@
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="index.html#about">About Us</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="cart.html">Cart</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -158,19 +246,17 @@
             <div class="footer-links">
                 <h3>Contact Us</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Candle Lane, Mumbai</li>
-                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
-                    <li><i class="fas fa-envelope"></i> hello@alora.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Anoop Nagar Fazalpur ,Meerut</li>
+                    <li><i class="fas fa-phone"></i> +91 8449523079</li>
+                    <li><i class="fas fa-envelope"></i> aloracandle54@gmail.com</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Alora Luxury Candles. All Rights Reserved.</p>
+            <p>&copy; 2025 Alora Luxury Candles. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="js/products.js"></script>
-    <script src="js/cart.js"></script>
     <script>
         // Mobile Navigation
         const hamburger = document.querySelector('.hamburger');
@@ -182,130 +268,51 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Update cart count on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCartCount();
-            loadAllProducts();
-            setupFilters();
-        });
+        // Price Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyFilterBtn = document.getElementById('apply-filter');
+            const resetFilterBtn = document.getElementById('reset-filter');
+            const priceRadios = document.querySelectorAll('input[name="price"]');
+            const productCards = document.querySelectorAll('.product-card');
 
-        function updateCartCount() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            document.querySelector('.cart-count').textContent = totalItems;
-        }
-
-        function loadAllProducts() {
-            const productsGrid = document.getElementById('all-products');
-            productsGrid.innerHTML = '';
-            
-            // Get filtered and sorted products
-            const filteredProducts = filterProducts();
-            const sortedProducts = sortProducts(filteredProducts);
-            
-            if (sortedProducts.length === 0) {
-                productsGrid.innerHTML = '<p class="no-products">No products match your filters. Please try different criteria.</p>';
-                return;
-            }
-            
-            sortedProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card';
-                productCard.dataset.price = product.price;
-                productCard.dataset.name = product.name;
-                productCard.dataset.category = product.category;
-                productCard.dataset.fragrance = product.fragrance;
+            applyFilterBtn.addEventListener('click', function() {
+                const selectedPrice = document.querySelector('input[name="price"]:checked').value;
                 
-                productCard.innerHTML = `
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <p class="product-price">₹${product.price.toLocaleString()}</p>
-                        <div class="product-actions">
-                            <button class="btn add-to-cart" 
-                                data-id="${product.id}" 
-                                data-name="${product.name}" 
-                                data-price="${product.price}" 
-                                data-image="${product.image}">
-                                Add to Cart
-                            </button>
-                            <button class="btn btn-secondary quick-view" data-id="${product.id}">
-                                Quick View
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                productsGrid.appendChild(productCard);
-            });
-            
-            // Add event listeners to new buttons
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', addToCart);
-            });
-        }
-
-        function filterProducts() {
-            const categoryFilters = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(el => el.value);
-            const priceFilter = document.querySelector('input[name="price"]:checked').value;
-            const fragranceFilters = Array.from(document.querySelectorAll('input[name="fragrance"]:checked')).map(el => el.value);
-            
-            return window.products.filter(product => {
-                // Category filter
-                if (!categoryFilters.includes(product.category)) return false;
-                
-                // Price filter
-                if (priceFilter !== 'all') {
-                    const [min, max] = priceFilter.split('-').map(Number);
-                    if (max && (product.price < min || product.price > max)) return false;
-                    if (!max && product.price < min) return false;
-                }
-                
-                // Fragrance filter
-                if (!fragranceFilters.includes(product.fragrance)) return false;
-                
-                return true;
-            });
-        }
-
-        function sortProducts(products) {
-            const sortBy = document.getElementById('sort-by').value;
-            
-            return [...products].sort((a, b) => {
-                switch (sortBy) {
-                    case 'price-low':
-                        return a.price - b.price;
-                    case 'price-high':
-                        return b.price - a.price;
-                    case 'name-asc':
-                        return a.name.localeCompare(b.name);
-                    case 'name-desc':
-                        return b.name.localeCompare(a.name);
-                    default:
-                        return 0;
-                }
-            });
-        }
-
-        function setupFilters() {
-            // Apply filters button
-            document.getElementById('apply-filters').addEventListener('click', loadAllProducts);
-            
-            // Reset filters button
-            document.getElementById('reset-filters').addEventListener('click', () => {
-                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.checked = true;
+                productCards.forEach(card => {
+                    const price = parseFloat(card.getAttribute('data-price'));
+                    let shouldShow = true;
+                    
+                    switch(selectedPrice) {
+                        case '0-1000':
+                            shouldShow = price < 1000;
+                            break;
+                        case '1000-1500':
+                            shouldShow = price >= 1000 && price <= 1500;
+                            break;
+                        case '1500-2000':
+                            shouldShow = price >= 1500 && price <= 2000;
+                            break;
+                        case '2000+':
+                            shouldShow = price > 2000;
+                            break;
+                        default:
+                            shouldShow = true;
+                    }
+                    
+                    card.style.display = shouldShow ? 'block' : 'none';
                 });
-                document.querySelector('input[name="price"][value="all"]').checked = true;
-                document.getElementById('sort-by').value = 'default';
-                loadAllProducts();
             });
-            
-            // Sort by change
-            document.getElementById('sort-by').addEventListener('change', loadAllProducts);
-        }
+
+            resetFilterBtn.addEventListener('click', function() {
+                // Reset radio buttons
+                document.querySelector('input[name="price"][value="all"]').checked = true;
+                
+                // Show all products
+                productCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            });
+        });
     </script>
 </body>
 </html>
